@@ -1,0 +1,17 @@
+import java.io.*; 
+import java.net.*; 
+ 
+class TCPClient { 
+    public static void main(String args[]) throws Exception { 
+        Socket s = new Socket("127.0.0.1", 8080); 
+ 
+        BufferedReader in = new BufferedReader( 
+                new InputStreamReader(s.getInputStream())); 
+        PrintWriter out = new PrintWriter(s.getOutputStream(), true); 
+ 
+        out.println("Hello Server"); 
+        System.out.println("Server: " + in.readLine()); 
+ 
+        s.close(); 
+    } 
+} 
