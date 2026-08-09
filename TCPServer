@@ -1,0 +1,19 @@
+import java.io.*; 
+import java.net.*; 
+ 
+class TCPServer { 
+    public static void main(String args[]) throws Exception { 
+        ServerSocket ss = new ServerSocket(8080); 
+        Socket s = ss.accept(); 
+ 
+        BufferedReader in = new BufferedReader( 
+                new InputStreamReader(s.getInputStream())); 
+        PrintWriter out = new PrintWriter(s.getOutputStream(), true); 
+ 
+        System.out.println("Client: " + in.readLine()); 
+        out.println("Message received"); 
+ 
+        s.close(); 
+        ss.close(); 
+    } 
+}
